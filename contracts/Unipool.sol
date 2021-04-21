@@ -9,7 +9,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uniswapTokenExchange = IERC20(0x4505b262DC053998C10685DC5F9098af8AE5C8ad);
+    IERC20 public uniswapTokenExchange = IERC20(0x9ca8aef2372c705d6848fdda3c1267a7f51267c1);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -36,8 +36,8 @@ contract LPTokenWrapper {
 }
 
 contract Unipool is LPTokenWrapper {
-    // HONEY
-    IERC20 public tradedToken = IERC20(0x71850b7E9Ee3f13Ab46d67167341E4bDc905Eef9);
+    // Unlock
+    IERC20 public tradedToken = IERC20(0x90de74265a416e1393a450752175aed98fe11517);
     uint256 public constant DURATION = 30 days;
 
     uint256 public periodFinish = 0;
