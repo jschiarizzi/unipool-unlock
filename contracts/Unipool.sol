@@ -9,7 +9,7 @@ contract LPTokenWrapper {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
-    IERC20 public uniswapTokenExchange = IERC20(0x9ca8aef2372c705d6848fdda3c1267a7f51267c1);
+    IERC20 public uniswapTokenExchange = IERC20(0x97Edc0e345FbBBd8460847Fcfa3bc2a13bF8641F);
 
     uint256 private _totalSupply;
     mapping(address => uint256) private _balances;
@@ -37,7 +37,7 @@ contract LPTokenWrapper {
 
 contract Unipool is LPTokenWrapper {
     // Rice
-    IERC20 public tradedToken = IERC20(0x90de74265a416e1393a450752175aed98fe11517);
+    IERC20 public tradedToken = IERC20(0x97Edc0e345FbBBd8460847Fcfa3bc2a13bF8641F);
     uint256 public constant DURATION = 30 days;
 
     uint256 public periodFinish = 0;
@@ -137,7 +137,7 @@ contract Unipool is LPTokenWrapper {
         periodFinish = block.timestamp.add(DURATION);
 
         tradedToken.safeTransferFrom(msg.sender, address(this), _amount);
-        totalRewardsDistributed = totalRewardsDistributed.add(_amount)
+        totalRewardsDistributed = totalRewardsDistributed.add(_amount);
         
         emit RewardAdded(_amount);
     }
