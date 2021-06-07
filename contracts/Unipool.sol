@@ -36,7 +36,7 @@ contract LPTokenWrapper {
 }
 
 contract Unipool is LPTokenWrapper {
-    // Unlock
+    // Rice
     IERC20 public tradedToken = IERC20(0x90de74265a416e1393a450752175aed98fe11517);
     uint256 public constant DURATION = 30 days;
 
@@ -46,6 +46,7 @@ contract Unipool is LPTokenWrapper {
     uint256 public rewardPerTokenStored;
     mapping(address => uint256) public userRewardPerTokenPaid;
     mapping(address => uint256) public rewards;
+    uint256 public totalRewardsDistributed;
 
     event RewardAdded(uint256 reward);
     event Staked(address indexed user, uint256 amount);
@@ -136,7 +137,8 @@ contract Unipool is LPTokenWrapper {
         periodFinish = block.timestamp.add(DURATION);
 
         tradedToken.safeTransferFrom(msg.sender, address(this), _amount);
-
+        totalRewardsDistributed = totalRewardsDistributed.add(_amount)
+        
         emit RewardAdded(_amount);
     }
 }
